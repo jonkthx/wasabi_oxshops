@@ -28,7 +28,8 @@ Config.Shops = {
             stash = {
                 string = '[E] - Access Inventory',
                 coords = vec3(-588.59, -1066.42, 22.34),
-                range = 3.0
+                range = 3.0,
+                allowedJobs = {'uwucafe'}
             },
             shop = {
                 string = '[E] - Access Shop',
