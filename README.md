@@ -2,6 +2,11 @@
 
 This resource was created as a free script to allow those with ox_inventory to have player owned shops
 
+####
+ADDED
+                allowedJobs = {'burgershot'},
+For stash so only the allowed job can put item for sale
+
 ## Features
 - Supports ESX and QBCore
 - Utilizes ox_inventory UI / stashes / shops / functions
