@@ -63,7 +63,22 @@ CreateThread(function()
 
     for _, v in pairs(points) do
         function v.stash:nearby()
-            if not self.isClosest or PlayerData.job.name ~= self.shop then return end
+            if not self.isClosest then return end
+        
+            -- Check if player's job is allowed to access the stash.
+            local isJobAllowed = false
+            local allowedJobs = Config.Shops[self.shop].locations.stash.allowedJobs
+            for _, job in ipairs(allowedJobs) do
+                if PlayerData.job.name == job then
+                    isJobAllowed = true
+                    break
+                end
+            end
+        
+            if not isJobAllowed then
+                return  -- If the player's job isn't allowed, simply return and don't proceed further.
+            end
+
             if Config.DrawMarkers then
                 DrawMarker(2, self.coords.x, self.coords.y, self.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 150, 30, 222, false, false, 0, true, false, false, false)
             end
